@@ -23,6 +23,3 @@ class Booking(models.Model):
     game = models.OneToOneField(Game, on_delete=models.CASCADE)
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
 
-
-
-
