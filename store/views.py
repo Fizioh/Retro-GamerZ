@@ -1,40 +1,42 @@
 #from django.shortcuts import render
 from django.http import HttpResponse
-# from .models import GAMES
+from .models import Game, Contact, Creator, Booking
 # Create your views here.
 
 def index(request):
-    message = "Ohayo mina-san !"
+    games = Game.objects.filter(available=True).order_by('-created_at')[:6]
+    formatted_games=["<li>{}</li>".format(game.title) for game in games]
+    message = """<ul>{}</ul>""".format("\n".join(formatted_games))
     return HttpResponse(message)
 
 def listing(request):
-    games = ["<li>{}</li>".format(game['name']) for game in GAMES]
-    message = """<ul>{}</ul>""".format("\n".join(games))
+    games = Game.objects.filter(available=True)
+    formatted_games=["<li>{}</li>".format(game.title) for game in games]
+    message = """<ul>{}</ul>""".format("\n".join(formatted_games))
     return HttpResponse(message)
 
 def detail(request, game_id):
-    id = int(game_id)
-    game = GAMES[id]
-    creators = " ".join([creator['name'] for creator in game['creators']])
-    message = "Le nom du jeu est {}. Il a été codé par {}".format(game['name'], creators)
+    game = Game.objects.get(pk=game_id)
+    creators = " ".join([creator.name for creator in game.creators.all()])
+    message = "Le nom du jeu est {}. Il a été codé par {}".format(game.title, creators)
     return HttpResponse(message)
 
 def search(request):
     query = request.GET.get('query')
     if not query:
-        message = "Aucun créateur n'est demandé"
+        games = Game.objects.all()
     else:
-        games = [
-            game for game in GAMES
-            if query in " ".join(creator['name'] for creator in game['creators'])
-        ]
+        games = Game.objects.filter(title__icontains=query)
         
-        if len(games) == 0:
-            message = "Pas de bol ! Il n'y a aucun résultat..."
+        if not games.exists():
+            games = Game.objects.filter(name__icontains=query)
+
+        if not games.exists():
+            message = "Pas de bol ! Aucun résultat n'a été trouvé..."
         else:
-            games = ["<li>{}</li>".format(game['name']) for game in games]
+            games = ["<li>{}</li>".format(game.title) for game in games]
             message = """
-                Nous avons trouvé les eux correspondant à votre requête ! Les voici :
+                Nous avons trouvé les jeux correspondant à votre requête ! Les voici :
                 <ul>
                 {}
                 </ul>
