@@ -1,17 +1,28 @@
-#from django.db import models
+from django.db import models
 
 # Create your models here.
 
-CREATORS = {
-    'michel-ancel': {'name': 'Michel Ancel'},
-    'konchan': {'name': 'Koji Kondo'},
-    'ibjade': {'name': 'Jade Raymond'},
-    'patrice-desilets': {'name': 'Patrice Désilets'},
+class Creator(models.Model):
+    name = models.CharField(max_length=200, unique=True)
 
-}
+class Contact(models.Model):
+    email = models.EmailField(max_length=100)
+    name = models.CharField(max_length=200)
 
-GAMES = [
-    {'name': 'Rayman', 'creators': [CREATORS['michel-ancel']]},
-    {'name': 'Zelda', 'creators': [CREATORS['konchan']]},
-    {'name': 'Assasins Creed', 'creators': [CREATORS['ibjade'], CREATORS['patrice-desilets']]}
-]
+class Game(models.Model):
+    reference = models.IntegerField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    available = models.BooleanField(default=True)
+    title = models.CharField(max_length=200)
+    picture= models.URLField()
+    creators = models.ManyToManyField(Creator, related_name='games', blank=True)
+
+class Booking(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    contacted = models.BooleanField(default=False)
+    game = models.OneToOneField(Game, on_delete=models.CASCADE)
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
+
+
+
+
