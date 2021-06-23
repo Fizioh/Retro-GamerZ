@@ -1,13 +1,14 @@
 #from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Game, Contact, Creator, Booking
+from django.template import loader
 # Create your views here.
 
 def index(request):
     games = Game.objects.filter(available=True).order_by('-created_at')[:6]
     formatted_games=["<li>{}</li>".format(game.title) for game in games]
-    message = """<ul>{}</ul>""".format("\n".join(formatted_games))
-    return HttpResponse(message)
+    template = loader.get_template('store/index.html')
+    return HttpResponse(template.render(request=request))
 
 def listing(request):
     games = Game.objects.filter(available=True)
