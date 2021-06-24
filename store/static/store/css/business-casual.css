@@ -13,6 +13,7 @@ body {
     -o-background-size: cover;
 }
 
+
 h1,
 h2,
 h3,
@@ -23,12 +24,18 @@ h6 {
     font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
+
+}
+.card {
+    background-color: black;
+}
+h5 {
+    color: rgb(255, 49, 42);
 }
 
 p {
     font-size: 1.25em;
     line-height: 1.6;
-    color: #000;
 }
 
 hr {
@@ -39,6 +46,9 @@ hr {
 .brand,
 .address-bar {
     display: none;
+}
+.navbar-default {
+    background: black;
 }
 
 .navbar-brand {
@@ -80,8 +90,7 @@ hr {
 .box {
     margin-bottom: 20px;
     padding: 30px 15px;
-    background: #fff;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.884);
 }
 
 .intro-text {

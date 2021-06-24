@@ -1,26 +1,27 @@
-#from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render
 from .models import Game, Contact, Creator, Booking
-from django.template import loader
 # Create your views here.
 
 def index(request):
-    games = Game.objects.filter(available=True).order_by('-created_at')[:6]
-    formatted_games=["<li>{}</li>".format(game.title) for game in games]
-    template = loader.get_template('store/index.html')
-    return HttpResponse(template.render(request=request))
+    games = Game.objects.order_by('-created_at')[:9]
+    context = {'games': games}
+    return render(request, 'store/index.html', context)
 
 def listing(request):
     games = Game.objects.filter(available=True)
-    formatted_games=["<li>{}</li>".format(game.title) for game in games]
-    message = """<ul>{}</ul>""".format("\n".join(formatted_games))
-    return HttpResponse(message)
+    context = {'games': games}
+    return render(request, 'store/listing.html', context)
 
 def detail(request, game_id):
     game = Game.objects.get(pk=game_id)
-    creators = " ".join([creator.name for creator in game.creators.all()])
-    message = "Le nom du jeu est {}. Il a été codé par {}".format(game.title, creators)
-    return HttpResponse(message)
+    creators_name = " ".join([creator.name for creator in game.creators.all()])
+    context = {
+        'game_title': game.title,
+        'creators_name': creators_name,
+        'game_id': game.id,
+        'thumbnail': game.picture
+    }
+    return render(request, 'store/detail.html', context)
 
 def search(request):
     query = request.GET.get('query')
@@ -29,18 +30,14 @@ def search(request):
     else:
         games = Game.objects.filter(title__icontains=query)
         
-        if not games.exists():
-            games = Game.objects.filter(name__icontains=query)
+    if not games.exists():
+        games = Game.objects.filter(creators__name__icontains=query)
 
-        if not games.exists():
-            message = "Pas de bol ! Aucun résultat n'a été trouvé..."
-        else:
-            games = ["<li>{}</li>".format(game.title) for game in games]
-            message = """
-                Nous avons trouvé les jeux correspondant à votre requête ! Les voici :
-                <ul>
-                {}
-                </ul>
-            """.format("</i><li>".join(games))
+    title = "Résultats pour la requête %s"%query
+
+    context = {
+        'games': games,
+        'title': title,
+    }
         
-    return HttpResponse(message)
+    return render(request, 'store/search.html', context)
