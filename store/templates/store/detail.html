@@ -7,28 +7,30 @@
 <div class="col-md-6">
   <img src="{{ thumbnail }}" alt="{{ game_title }}" class="img-responsive">
 </div>
-<div class="col-md-6">
-  <div style="margin-bottom:45px">
-    <h2 class="text-center creator_name">Concepteurs</h2>
-    <p>{{ creators_name }}</p>
+
+<div class="col-md-6" style="background-color: rgba(0, 0, 0, 0.767);" >
+  <div style="margin-bottom:25px">
+    <h3 class="text-center">Concepteurs</h3>
+    <p class="text-center">{{ creators_name }}</p>
   </div>
 
-  <h2 class="text-center creator_name">Réserver {{ game_title }}</h2>
-  <p style="margin-bottom: 20px;">Demandez-nous de mettre de côté {{ game_title }} et venez le chercher dès demain en magasin ! </p>
-  <form class="form-inline" action="/" method="post">
+  <h3 class="text-center">Réserver</h3>
+  <h5 style="margin-bottom: 20px;">Demandez-nous de mettre de côté {{ game_title }} et venez le chercher dès demain en magasin ! </h5>
+  <form class="form" action="/" method="post" >
 
     <div class="form-group">
-      <label for="name" class="control-label">Nom</label>
-      <input type="text" name="name" value="" id="name">
+      <label for="name" class="control-label"><p>Nom</p></label>
+      <input type="text" class="form-control" name="name" value="" id="name">
     </div>
     <div class="form-group">
-      <label for="email" class="control-label">E-mail</label>
-      <input type="text" name="email" value="" id="email">
+      <label for="email" class="control-label"><p>E-mail</p></label>
+      <input type="text" class="form-control" name="email" value="" id="email">
     </div>
     <!-- <input type="hidden" class="hidden" value="" name="album_id"> -->
 
     <button type="submit" class="btn btn-success">Réserver</button>
   </form>
+  <hr>
 
 </div>
 

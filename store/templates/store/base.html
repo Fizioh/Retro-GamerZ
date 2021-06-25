@@ -37,9 +37,9 @@
 
     <div class="brand">Retro GamerZ</div>
     <div class="address-bar">16 Boulevard Voltaire | Paris, FR 75003 | 123.456.7890</div>
-
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
+        {% include 'store/search_form.html' %}
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -54,7 +54,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav ">
+                <ul class="nav navbar-nav mr-auto ">
                     <li>
                         <a href="{% url 'store:listing' %}">Tous nos jeux</a>
                     </li>
@@ -64,6 +64,7 @@
         </div>
         <!-- /.container -->
     </nav>
+
 
     <div class="container">
 

@@ -26,16 +26,15 @@ h6 {
     letter-spacing: 1px;
 
 }
-.card {
-    background-color: black;
-}
+
 h5 {
     color: rgb(255, 49, 42);
 }
 
 p {
-    font-size: 1.25em;
+    font-size: 1.4em;
     line-height: 1.6;
+    color: white;
 }
 
 hr {
@@ -66,6 +65,27 @@ hr {
 .img-full {
     min-width: 100%;
 }
+.img-responsive {
+    padding: 3%;
+    height: 30vh;
+    margin: auto;
+}
+h3 {
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.767);
+    justify-self: center;
+    padding: auto;
+    margin-left: 70px;
+    height: 420px;
+    border-radius: 6%;
+    border: 1px solid #fff;
+}
+
 
 .brand-before,
 .brand-name {
@@ -81,6 +101,7 @@ hr {
     font-size: 4em;
 }
 
+
 .tagline-divider {
     margin: 15px auto 3px;
     max-width: 250px;
@@ -89,15 +110,45 @@ hr {
 
 .box {
     margin-bottom: 20px;
-    padding: 30px 15px;
-    background: rgba(255, 255, 255, 0.884);
+    padding-top: 20px;
+    background: rgba(255, 255, 255, 0.445);
+    
 }
+
+
 
 .intro-text {
     text-transform: uppercase;
-    font-size: 1.25em;
-    font-weight: 400;
-    letter-spacing: 1px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: azure;
+    letter-spacing: 2px;
+    text-shadow: rgb(19, 17, 13) 5px 5px 3px;
+}
+.not-found {
+    background-color: #000000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23dddcdd' fill-opacity='0.23'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
+    
+}
+section.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5%;
+    height: 100vh;
+}
+
+section.notFound h1 {
+    color: red;
+    font-size: 100px;
+}
+
+section.notFound h2 {
+    font-size: 50px;
+}
+
+section.notFound h1, h2, h3 {
+    margin-bottom: 40px;
 }
 
 .img-border {
@@ -112,8 +163,12 @@ hr {
 }
 
 footer {
-    background: #fff;
-    background: rgba(255,255,255,0.9);
+    background: rgb(15, 14, 14);
+    background: rgba(48, 42, 42, 0.9);
+}
+.form-inline {
+    float: right;
+    padding:    2%;
 }
 
 footer p {
