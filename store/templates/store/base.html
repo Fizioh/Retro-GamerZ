@@ -54,7 +54,10 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav mr-auto ">
+                <ul class="nav navbar-nav mr-auto">
+                    <li>
+                        <a href="{% url 'store:index' %}">Accueil</a>
+                    </li>
                     <li>
                         <a href="{% url 'store:listing' %}">Tous nos jeux</a>
                     </li>

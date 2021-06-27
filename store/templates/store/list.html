@@ -2,29 +2,47 @@
     </h2>
 
 {% if games %}
+    <div class="card-group">
     {%for game in games %}
             <div class="card col-sm-3 text-center">
-                <div class="card-img-top" style="width: 250px; margin: auto;">
+                <div class="card-img-top" style="width: 200px; margin: auto;">
                     <a href=" {% url 'store:detail' game_id=game.id %} ">
                         <img class="img-responsive" src="{{ game.picture }}" alt="{{ game.title }}">
                     </a>
                 </div>
-                    <h3 class="card-title"><a href="{% url 'store:detail' game_id=game.id %}"> {{ game.title }} </a></h3>
-
-                    {% for creator in game.creators.all %}
-                        {% if forloop.first %}
-                            <p> {{ creator.name }} </p>
-                        {% endif %}
-                    {% endfor %}
-                    {%if game.available == True %}
+                <div class="card-body">
+                {%if game.available == True %}
                         <p class="text-success">Disponible</p>
                     {% else %}
                         <p class="text-danger">Indisponible</p>
-                    {% endif %}
+                {% endif %}
 
+                    <h4 class="cd-title"><a href="{% url 'store:detail' game_id=game.id %}"> {{ game.title }} </a></h4>
+                    {% for creator in game.creators.all %}
+                        {% if forloop.first %}
+                            <p class="creator"> {{ creator.name }} </p>
+                        {% endif %}
+                    {% endfor %}
+                  
+                </div>
             </div>
-        {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
+        {% if forloop.counter|divisibleby:4 %}<div class="clearfix"></div>{% endif %}
     {% endfor %}
+    {% if paginate %}
+    <div class="clearfix"></div>
+    <nav aria-label="">
+        <ul class="pager">
+        {% if games.has_previous %}
+            <li><a href="?page={{ games.previous_page_number }}"> Précedent </a></li>
+        {% endif %}
+        
+        {%if games.has_next %}
+            <li><a href="?page={{ games.next_page_number }}"> Suivant </a></li>
+        {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+    </div>
 {% else %}
      <div class="text-center">
         Il n'y aucun résultat lié à cette requête...

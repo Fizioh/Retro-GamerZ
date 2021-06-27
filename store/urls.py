@@ -7,6 +7,7 @@ app_name='store'
 urlpatterns = [
 
     path('', views.listing, name="listing"),
+    path('index', views.index, name="index"),
     re_path('^(?P<game_id>[0-9]+)/$', views.detail, name="detail"),
     re_path('^search/$', views.search, name="search"),
      # path('', views.index),

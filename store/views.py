@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Game, Contact, Creator, Booking
 # Create your views here.
 
@@ -8,8 +9,20 @@ def index(request):
     return render(request, 'store/index.html', context)
 
 def listing(request):
-    games = Game.objects.order_by('-created_at')
-    context = {'games': games}
+    games_list = Game.objects.order_by('-created_at')
+    paginator = Paginator(games_list, 9)
+    page = request.GET.get('page')
+    try:
+        games = paginator.page(page)
+    except PageNotAnInteger:
+        games = paginator.page(1)
+    except EmptyPage:
+        #if page is out of range (ex 999), deliver last page of results
+        games = paginator.page(paginator.num_pages)
+    context = {
+        'games': games,
+        'paginate': True
+        }
     return render(request, 'store/listing.html', context)
 
 def detail(request, game_id):

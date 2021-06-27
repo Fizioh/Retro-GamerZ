@@ -13,7 +13,6 @@ body {
     -o-background-size: cover;
 }
 
-
 h1,
 h2,
 h3,
@@ -32,8 +31,7 @@ h5 {
 }
 
 p {
-    font-size: 1.4em;
-    line-height: 1.6;
+    font-size: 1.1em;
     color: white;
 }
 
@@ -66,26 +64,27 @@ hr {
     min-width: 100%;
 }
 .img-responsive {
-    padding: 3%;
+    padding: 2%;
     height: 30vh;
     margin: auto;
 }
-h3 {
+.cd-title a {
     color: white;
-    font-weight: 400;
     letter-spacing: 1px;
 }
 
 .card {
     background: rgba(0, 0, 0, 0.767);
-    justify-self: center;
-    padding: auto;
-    margin-left: 70px;
-    height: 420px;
-    border-radius: 6%;
+    height: 345px;
+    border-radius: 2%;
+    max-width: 25rem;
     border: 1px solid #fff;
+    margin-left: 1%;      
+    margin-right: 1%;
 }
-
+.creator {
+    color: rgba(21, 181, 255, 0.623);
+}
 
 .brand-before,
 .brand-name {
@@ -110,9 +109,9 @@ h3 {
 
 .box {
     margin-bottom: 20px;
+    padding-left: 3%;
     padding-top: 20px;
     background: rgba(255, 255, 255, 0.445);
-    
 }
 
 
@@ -257,12 +256,12 @@ footer p {
 
 /*  CUSTOM  */
 .brand a {
-  color: white;
+  color: rgb(177, 19, 19);
   text-decoration: none;
 }
 
 .brand a:hover {
-  color: #999;
+  color: rgb(37, 75, 201);
   text-decoration: none;
 }
 
@@ -302,3 +301,5 @@ footer p {
 .errorlist .error {
   color: red;
 }
+
+
