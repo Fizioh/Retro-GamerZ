@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db import transaction, IntegrityError
+
 from .models import Game, Contact, Creator, Booking
 from .forms import ContactForm, ParagraphErrorList
 # Create your views here.
@@ -40,31 +42,36 @@ def detail(request, game_id):
         if form.is_valid():
             email = form.cleaned_data['email']
             name = form.cleaned_data['name']
-
-            contact = Contact.objects.filter(email=email)
-            if not contact.exists():
-            # if contact is not registered create one
-                contact = Contact.objects.create(
-                    email=email,
-                    name=name
-                )
-            game = get_object_or_404(Game, id=game_id)
-            booking = Booking.objects.create(
-                contact=contact,
-                game=game
-            )
-            game.available = False
-            game.save()
-            context = {
-                'game_title': game.title
-            }
-            return render(request, 'store/merci.html', context)
-        else:
-            context['errors'] = form.errors.items()
+            
+            try:
+                with transaction.atomic():
+                    contact = Contact.objects.filter(email=email)
+                    if not contact.exists():
+                    # if contact is not registered create one
+                        contact = Contact.objects.create(
+                            email=email,
+                            name=name
+                        )
+                    else:
+                        contact = contact.first()
+                    game = get_object_or_404(Game, id=game_id)
+                    booking = Booking.objects.create(
+                        contact=contact,
+                        game=game
+                    )
+                    game.available = False
+                    game.save()
+                    context = {
+                        'game_title': game.title
+                    }
+                    return render(request, 'store/merci.html', context)
+            except IntegrityError:
+                form.errors['internal'] = "Une erreur interne est survenue... Merci de recommencer votre requête."
     else:
         form = ContactForm()
 
     context['form'] = form
+    context['errors'] = form.errors.items()
     return render(request, 'store/detail.html', context)
 
 def search(request):
