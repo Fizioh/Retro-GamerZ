@@ -75,12 +75,20 @@ hr {
 
 .card {
     background: rgba(0, 0, 0, 0.767);
-    height: 345px;
+    height: 360px;
     border-radius: 2%;
     max-width: 25rem;
-    border: 1px solid #fff;
     margin-left: 1%;      
     margin-right: 1%;
+
+    box-shadow: 0px 0px 0px rgba(92, 89, 89, 0.349);
+    -webkit-transition:  box-shadow .6s ease-out;
+}
+.card:hover {
+    box-shadow: 4px 9px 10px rgba(75, 75, 75, 0.781);
+    -webkit-transition:  box-shadow .6s ease-in;
+    top: -12px;
+    border: 0.5px solid #050505;
 }
 .creator {
     color: rgba(21, 181, 255, 0.623);
@@ -89,6 +97,17 @@ hr {
 .brand-before,
 .brand-name {
     text-transform: capitalize;
+}
+#details {
+    background-color: rgba(207, 193, 193, 0.747);
+    border-radius: 3%;
+    padding: 4%;
+    margin-top: -60px;
+    text-align: center;
+
+}
+#details .form-group {
+    text-align: left;
 }
 
 .brand-before {

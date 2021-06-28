@@ -1,35 +1,47 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
-<hr>
-<h1 class="intro-text text-center">{{ game_title }}</h1>
-<hr class="detail-separator">
+<h1 class="intro-text ">{{ game_title }}</h1>
 <div class="col-md-6">
   <img src="{{ thumbnail }}" alt="{{ game_title }}" class="img-responsive">
 </div>
 
-<div class="col-md-6" style="background-color: rgba(0, 0, 0, 0.767);" >
-  <div style="margin-bottom:25px">
-    <h3 class="text-center">Concepteurs</h3>
-    <p class="text-center">{{ creators_name }}</p>
+<div class="col-md-6" >
+
+ <div id="details">
+    <div style="margin-bottom:25px">
+      <h3 class="text-center">Concepteurs</h3>
+      <p class="text-center">{{ creators_name }}</p>
+    </div>
+
+    <h3 class="text-center">Réserver</h3>
+    <h5 style="margin-bottom: 20px;">Demandez-nous de mettre de côté {{ game_title }} et venez le chercher dès demain en magasin ! </h5>
+    <form class="form" action="{% url 'store:detail' game_id=game_id%}" method="post" >
+      {% csrf_token %}
+
+      <div class="form-group {% if form.name.errors %}has-warning has-feedback{% endif %}">
+        <label for="{{ form.name.id_for_label }}" class="control-label"><p>Nom</p></label>
+        {{ form.name }}
+      </div>
+      <div class="form-group {% if form.email.errors %}has-warning has-feedback{% endif %}">
+        <label for="{{ form.email.id_for_label }}" class="control-label"><p>E-mail</p></label>
+        {{ form.email }}
+      </div>
+      <!-- <input type="hidden" class="hidden" value="{{ game_id }}" name="album_id"> -->
+
+      <button type="submit" class="btn btn-form btn-success">Réserver</button>
+    </form>
+    {% if errors %}
+      <div>
+        {% for key, error in errors %}
+        {% autoescape off %}
+          {{ error }}
+        {% endautoescape %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 
-  <h3 class="text-center">Réserver</h3>
-  <h5 style="margin-bottom: 20px;">Demandez-nous de mettre de côté {{ game_title }} et venez le chercher dès demain en magasin ! </h5>
-  <form class="form" action="/" method="post" >
-
-    <div class="form-group">
-      <label for="name" class="control-label"><p>Nom</p></label>
-      <input type="text" class="form-control" name="name" value="" id="name">
-    </div>
-    <div class="form-group">
-      <label for="email" class="control-label"><p>E-mail</p></label>
-      <input type="text" class="form-control" name="email" value="" id="email">
-    </div>
-    <!-- <input type="hidden" class="hidden" value="" name="album_id"> -->
-
-    <button type="submit" class="btn btn-success">Réserver</button>
-  </form>
   <hr>
 
 </div>

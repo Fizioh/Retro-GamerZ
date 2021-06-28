@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Game, Contact, Creator, Booking
+from .forms import ContactForm
 # Create your views here.
 
 def index(request):
@@ -34,6 +35,36 @@ def detail(request, game_id):
         'game_id': game.id,
         'thumbnail': game.picture
     }
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            name = form.cleaned_data['name']
+
+            contact = Contact.objects.filter(email=email)
+            if not contact.exists():
+            # if contact is not registered create one
+                contact = Contact.objects.create(
+                    email=email,
+                    name=name
+                )
+            game = get_object_or_404(Game, id=game_id)
+            booking = Booking.objects.create(
+                contact=contact,
+                game=game
+            )
+            game.available = False
+            game.save()
+            context = {
+                'game_title': game.title
+            }
+            return render(request, 'store/merci.html', context)
+        else:
+            context['errors'] = form.errors.items()
+    else:
+        form = ContactForm()
+
+    context['form'] = form
     return render(request, 'store/detail.html', context)
 
 def search(request):
