@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Game, Contact, Creator, Booking
-from .forms import ContactForm
+from .forms import ContactForm, ParagraphErrorList
 # Create your views here.
 
 def index(request):
@@ -36,7 +36,7 @@ def detail(request, game_id):
         'thumbnail': game.picture
     }
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, error_class=ParagraphErrorList)
         if form.is_valid():
             email = form.cleaned_data['email']
             name = form.cleaned_data['name']
