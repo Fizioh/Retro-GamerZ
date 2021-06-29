@@ -8,7 +8,9 @@ from .forms import ContactForm, ParagraphErrorList
 
 def index(request):
     games = Game.objects.filter(available=True).order_by('-created_at')[:6]
-    context = {'games': games}
+    context = {
+        'games': games
+        }
     return render(request, 'store/index.html', context)
 
 def listing(request):

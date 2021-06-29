@@ -11,9 +11,9 @@
                     </a>
                 </div>
                 <div class="card-body">
-                {%if game.available == True %}
+                {%if game.available %}
                         <p class="text-success">Disponible</p>
-                    {% else %}
+                    {% else  %}
                         <p class="text-danger">Indisponible</p>
                 {% endif %}
 
