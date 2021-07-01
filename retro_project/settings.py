@@ -126,6 +126,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_URL = '/static/'
 
 
 INTERNAL_IPS = ['127.0.0.1']
@@ -138,12 +139,11 @@ INTERNAL_IPS = ['127.0.0.1']
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles/')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
-STATIC_URL = '/static/'
 
     
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = ( os.path.join(PROJECT_ROOT, 'staticfiles'), )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
