@@ -129,7 +129,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
 
 INTERNAL_IPS = ['127.0.0.1']
 
@@ -143,12 +142,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import dj_database_url
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+STATIC_URL = '/static/'
+
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(PROJECT_ROOT, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
