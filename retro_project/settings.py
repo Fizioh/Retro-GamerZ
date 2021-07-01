@@ -25,10 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-nkvo14@fu@14sy$!$^z*545wx9_$q#x(0q41@v5hods4puea-%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = False
     
 ALLOWED_HOSTS = ['retrogamerz.herokuapp.com']
 
@@ -139,16 +136,15 @@ INTERNAL_IPS = ['127.0.0.1']
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-if os.environ.get('ENV') == 'PRODUCTION':
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles/')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles/')
 
-    STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
     
-    STATICFILES_DIRS = ()
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = ()
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
