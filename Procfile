@@ -1,0 +1,1 @@
+web: gunicorn retro_project.wsgi
