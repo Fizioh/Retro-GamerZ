@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-nkvo14@fu@14sy$!$^z*545wx9_$q#x(0q41@v5hods4puea-%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
     
 ALLOWED_HOSTS = ['retrogamerz.herokuapp.com']
 
@@ -143,7 +143,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 
     
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'staticfiles'), )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 db_from_env = dj_database_url.config(conn_max_age=500)

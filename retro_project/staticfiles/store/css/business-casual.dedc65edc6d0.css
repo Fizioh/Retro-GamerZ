@@ -1,0 +1,324 @@
+/*!
+ * Start Bootstrap - Business Casual (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: url("../img/background.749ef1a065cb.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+}
+
+h5 {
+    color: rgb(255, 49, 42);
+}
+
+p {
+    font-size: 1.1em;
+    color: white;
+}
+
+hr {
+    max-width: 400px;
+    border-color: #999999;
+}
+
+.brand,
+.address-bar {
+    display: none;
+}
+.navbar-default {
+    background: black;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.navbar-nav {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.img-full {
+    min-width: 100%;
+}
+.img-responsive {
+    padding: 2%;
+    height: 30vh;
+    margin: auto;
+}
+.cd-title a {
+    color: white;
+    letter-spacing: 1px;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.767);
+    height: 360px;
+    border-radius: 2%;
+    max-width: 25rem;
+    margin-left: 1%;      
+    margin-right: 1%;
+
+    box-shadow: 0px 0px 0px rgba(92, 89, 89, 0.349);
+    -webkit-transition:  box-shadow .6s ease-out;
+}
+.card:hover {
+    box-shadow: 4px 9px 10px rgba(75, 75, 75, 0.781);
+    -webkit-transition:  box-shadow .6s ease-in;
+    top: -12px;
+    border: 0.5px solid #050505;
+}
+.creator {
+    color: rgba(21, 181, 255, 0.623);
+}
+
+.brand-before,
+.brand-name {
+    text-transform: capitalize;
+}
+#details {
+    background-color: rgba(207, 193, 193, 0.747);
+    border-radius: 3%;
+    padding: 4%;
+    margin-top: -60px;
+    text-align: center;
+
+}
+#details .form-group {
+    text-align: left;
+}
+
+.brand-before {
+    margin: 15px 0;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 4em;
+}
+
+
+.tagline-divider {
+    margin: 15px auto 3px;
+    max-width: 250px;
+    border-color: #999999;
+}
+
+.box {
+    margin-bottom: 20px;
+    padding-left: 3%;
+    padding-top: 20px;
+    background: rgba(255, 255, 255, 0.445);
+}
+
+
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bolder;
+    color: azure;
+    letter-spacing: 2px;
+    text-shadow: rgb(19, 17, 13) 5px 5px 3px;
+}
+.not-found {
+    background-color: #000000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23dddcdd' fill-opacity='0.23'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
+    
+}
+section.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5%;
+    height: 100vh;
+}
+
+section.notFound h1 {
+    color: red;
+    font-size: 100px;
+}
+
+section.notFound h2 {
+    font-size: 50px;
+}
+
+section.notFound h1, h2, h3 {
+    margin-bottom: 40px;
+}
+
+.img-border {
+    float: none;
+    margin: 0 auto 0;
+    border: #999999 solid 1px;
+}
+
+.img-left {
+    float: none;
+    margin: 0 auto 0;
+}
+
+footer {
+    background: rgb(15, 14, 14);
+    background: rgba(48, 42, 42, 0.9);
+}
+.form-inline {
+    float: right;
+    padding:    2%;
+}
+
+footer p {
+    margin: 0;
+    padding: 50px 0;
+}
+
+@media screen and (min-width:768px) {
+    .brand {
+        display: inherit;
+        margin: 0;
+        padding: 30px 0 10px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 5em;
+        font-weight: 700;
+        line-height: normal;
+        color: #fff;
+    }
+
+    .top-divider {
+        margin-top: 0;
+    }
+
+    .img-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .address-bar {
+        display: inherit;
+        margin: 0;
+        padding: 0 0 40px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: #fff;
+    }
+
+    .navbar {
+        border-radius: 0;
+    }
+
+    .navbar-header {
+        display: none;
+    }
+
+    .navbar {
+        min-height: 0;
+    }
+
+    .navbar-default {
+        border: none;
+        background: #fff;
+        background: rgba(255,255,255,0.9);
+    }
+
+    .nav>li>a {
+        padding: 35px;
+    }
+
+    .navbar-nav>li>a {
+        line-height: normal;
+    }
+
+    .navbar-nav {
+        display: table;
+        float: none;
+        margin: 0 auto;
+        table-layout: fixed;
+        font-size: 1.25em;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+/*  CUSTOM  */
+.brand a {
+  color: rgb(177, 19, 19);
+  text-decoration: none;
+}
+
+.brand a:hover {
+  color: rgb(37, 75, 201);
+  text-decoration: none;
+}
+
+.artist_name {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.intro-text {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.detail-separator {
+  padding-bottom: 25px;
+}
+
+.clearfix {
+  padding-bottom: 40px;
+}
+
+#search_form {
+  width: 43%;
+  margin: auto;
+  text-align: center;
+}
+
+.form-group.has-feedback .form-control {
+  padding: 6px 5px;
+  color: red;
+}
+
+.errorlist {
+  margin: 10px auto;
+}
+
+.errorlist .error {
+  color: red;
+}
+
+
