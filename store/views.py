@@ -7,7 +7,7 @@ from .forms import ContactForm, ParagraphErrorList
 # Create your views here.
 
 def index(request):
-    games = Game.objects.filter(available=True).order_by('-created_at')[:6]
+    games = Game.objects.filter(available=True).order_by('-created_at')[:4]
     context = {
         'games': games
         }
